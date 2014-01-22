@@ -792,8 +792,7 @@ static cfed_s_spconf_t *cfed_get_sp_by_url (cfed_s_context_t *p_ctx, const char 
  * zacnich udaju z p_user_attrs prihlasi do federace eduID.cz ve ktere je
  * SP mizar, pomoci sveho IdP se jmenem idpid. Po prihlaseni do federace
  *  posle SP svuj verejny klic a ziska zpet certifikat verejneho klice podepsany
- *  SP. Certifikat ulozi do cert_file_name. Pr_key_file je pouze pripraveno
- *  pro pozdejsi rozsireni funkce s vlastnim generovanim klice*/
+ *  SP. Certifikat ulozi do cert_file_name */
 int cfed_get_new_cert(cfed_s_context_t *p_ctx, const char *idpid, cfed_s_user_attrs_t *p_user_attrs, const char *cert_file_name, const char *pr_key_file)
 {
 	if (p_ctx == NULL)
@@ -1155,7 +1154,7 @@ static cfed_s_spconf_t *cfed_get_sp_struct (cfed_s_context_t *p_ctx, const char 
 {
 	if (p_ctx == NULL)
 		return NULL; 
-	if (!p_ctx->conf || p_ctx->conf->sps)
+	if (!p_ctx->conf || !p_ctx->conf->sps)
 		goto error_out;
 	
 	int i=0;		//iterator

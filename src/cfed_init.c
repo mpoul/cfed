@@ -176,9 +176,9 @@ int cfed_init (cfed_s_context_t *p_ctx, const char *conf_file_name)
 		}
 		/* jiny znak nez blokovy nebo komentar*/
 		else
-				//zpracuj nacteny radek
+				/*parse line read*/
 				if (cfed_init_parse_line(p_ctx, p_ctx->conf->idps[actual_idp_index], inside_braces, &line))
-					goto error_out;	//radek nezpracovat
+					goto error_out;	
 	}
 
 	return 0;
