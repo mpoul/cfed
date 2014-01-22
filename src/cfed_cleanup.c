@@ -36,7 +36,7 @@ static void cfed_cleanup_idps (cfed_s_context_t *p_ctx)
         int j=0;
 
 
-        if (p_ctx->conf->idps != NULL)
+        if (p_ctx->conf && p_ctx->conf->idps)
         {  while (p_ctx->conf->idps[i] != NULL )
            {
                 if (p_ctx->conf->idps[i]->attrs != NULL)

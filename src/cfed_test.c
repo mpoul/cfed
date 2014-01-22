@@ -22,8 +22,10 @@ int main(int argc, char *argv[])
 
 	/* inicializuj struktury*/
         cfed_s_context_t s_context;  //struct. cfed_sctx
-        if (cfed_init(&s_context, "cfed.conf"))
+        if (cfed_init(&s_context, "cfed.conf")) {
                 printf("cfed_init skoncila chybou\n");
+                return -1;
+        }
         cfed_print_idps(&s_context);	//ukaz zaznamy o vsech IDP
         cfed_s_user_attrs_t user_attrs;
         
@@ -105,7 +107,7 @@ void cfed_print_idps(cfed_s_context_t *p_ctx)
         int i=0;
         int j=0;
         /* seznam idps je prazdny */
-        if (p_ctx->conf->idps == NULL)
+        if (!p_ctx->conf || !p_ctx->conf->idps)
         {
                 cfed_make_err_msg (&(p_ctx->error), "cfed_print_idps: seznam idps je prazdny\n");
                 return;
@@ -136,7 +138,7 @@ static void cfed_print_sps(cfed_s_context_t *p_ctx)
         int i=0;
         int j=0;
         /* seznam sps je prazdny*/
-        if (p_ctx->conf->sps == NULL)
+        if (!p_ctx->conf || !p_ctx->conf->sps)
         {
                 cfed_make_err_msg (&(p_ctx->error), "cfed_print_idps: seznam idps je prazdny\n");
                 return;

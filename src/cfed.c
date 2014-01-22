@@ -658,6 +658,10 @@ static int cfed_set_authn_status(cfed_s_context_t *p_ctx)
 * vysledek uloz do result */
 int cfed_authn_only(cfed_s_context_t *p_ctx, const char *idpid, cfed_s_user_attrs_t *p_user_attrs)
 {
+/* vygeneruj casove razitko a umisti ho dovnitrn URL pro
+ 	*  kontaktovani IdP*/
+	char * str_to_send = NULL;
+
 	if (p_ctx == NULL)
 		return -1;
 
@@ -666,10 +670,7 @@ int cfed_authn_only(cfed_s_context_t *p_ctx, const char *idpid, cfed_s_user_attr
 	if (current_idp == NULL)
 		goto error_out;
 
-	/* vygeneruj casove razitko a umisti ho dovnitrn URL pro
- 	*  kontaktovani IdP*/
-	char * str_to_send = NULL;
-	
+		
 	/* z idpid vytahni jen cast po 3. '/'*/
 	unsigned int pattern_trunc_len = 0;
         unsigned int no_slash = 0;
@@ -1130,7 +1131,7 @@ static cfed_s_idpconf_t *cfed_get_idp_struct (cfed_s_context_t *p_ctx, const cha
 {
 	if (p_ctx == NULL)
 		return NULL; 
-	if (p_ctx->conf->idps == NULL)
+	if (!p_ctx->conf || !p_ctx->conf->idps)
 		goto error_out;
 	
 	int i=0;		//iterator
@@ -1154,7 +1155,7 @@ static cfed_s_spconf_t *cfed_get_sp_struct (cfed_s_context_t *p_ctx, const char 
 {
 	if (p_ctx == NULL)
 		return NULL; 
-	if (p_ctx->conf->sps == NULL)
+	if (!p_ctx->conf || p_ctx->conf->sps)
 		goto error_out;
 	
 	int i=0;		//iterator
