@@ -1,0 +1,46 @@
+/**********************************************************************/
+
+Všechny materiály na tomto CD včetně zdrojových kódu podléhají BSD licenci. 
+
+Copyright © 2011, Masarykova univerzita. Všechna práva vyhrazena.
+
+Redistribuce a použití zdrojových i binárních forem díla, v původním i upravovaném tvaru, jsou povoleny za následujících podmínek:
+
+    * Šířený zdrojový kód musí obsahovat výše uvedenou informaci o copyrightu, tento seznam podmínek a níže uvedené zřeknutí se odpovědnosti.
+    * Šířený binární tvar musí nést výše uvedenou informaci o copyrightu, tento seznam podmínek a níže uvedené zřeknutí se odpovědnosti ve své dokumentaci a/nebo dalších poskytovaných materiálech.
+    * Ani jméno vlastníka práv, ani jména přispěvatelů nemohou být použita při podpoře nebo právních aktech souvisejících s produkty odvozenými z tohoto software bez výslovného písemného povolení.
+
+TENTO SOFTWARE JE POSKYTOVÁN DRŽITELEM LICENCE A JEHO PŘISPĚVATELI „JAK STOJÍ A LEŽÍ“ A JAKÉKOLIV VÝSLOVNÉ NEBO PŘEDPOKLÁDANÉ ZÁRUKY VČETNĚ, ALE NEJEN, PŘEDPOKLÁDANÝCH OBCHODNÍCH ZÁRUK A ZÁRUKY VHODNOSTI PRO JAKÝKOLIV ÚČEL JSOU POPŘENY. DRŽITEL, ANI PŘISPĚVATELÉ NEBUDOU V ŽÁDNÉM PŘÍPADĚ ODPOVĚDNI ZA JAKÉKOLIV PŘÍMÉ, NEPŘÍMÉ, NÁHODNÉ, ZVLÁŠTNÍ, PŘÍKLADNÉ NEBO VYPLÝVAJÍCÍ ŠKODY (VČETNĚ, ALE NEJEN, ŠKOD VZNIKLÝCH NARUŠENÍM DODÁVEK ZBOŽÍ NEBO SLUŽEB; ZTRÁTOU POUŽITELNOSTI, DAT NEBO ZISKŮ; NEBO PŘERUŠENÍM OBCHODNÍ ČINNOSTI) JAKKOLIV ZPŮSOBENÉ NA ZÁKLADĚ JAKÉKOLIV TEORIE O ZODPOVĚDNOSTI, AŤ UŽ PLYNOUCÍ Z JINÉHO SMLUVNÍHO VZTAHU, URČITÉ ZODPOVĚDNOSTI NEBO PŘEČINU (VČETNĚ NEDBALOSTI) NA JAKÉMKOLIV ZPŮSOBU POUŽITÍ TOHOTO SOFTWARE, I V PŘÍPADĚ, ŽE DRŽITEL PRÁV BYL UPOZORNĚN NA MOŽNOST TAKOVÝCH ŠKOD.
+
+/**********************************************************************/
+
+Obsah CD:
+
+Text této práce ve formátu pdf.
+Zdrojové kódy navržené knihovny.
+Sdílenou knihovnu v~binární podobě.
+Aplikaci pro demonstraci funkcí knihovny.
+Zdrojový kód aplikace pro demonstraci funkcí knihovny.
+Makefile pro vytvoření sdílené knihovny ze zdrojových kódu a vytvoření aplikace pro demonstraci funkcí knihovny.
+Vzor konfiguračního souboru knihovny.
+Soubor README s pokyny pro práci s uvedenými soubory.
+
+
+/**********************************************************************/
+Předpoklady:
+Je třeba mít nainstalovánu knihovnu libcurl a openssl.
+
+Použití knihovny:
+Lze použít již vytvořenou knihovnu libtest.so.
+Pro otestování je možné použít testovací aplikaci cfed_test.
+cfed_test se spouští na příkazové řádce se 4 parametry :
+idpid SPURL username password
+
+priklad:
+./cfed_test https://idp2.ics.muni.cz/idp/shibboleth https://mizar.ics.muni.cz/onlineca/cgi-bin/login-mozilla.cgi?ca=Aleph UCO heslo
+
+Bližší popis aplikace lze nalézt ve zdrojových kódech.
+
+Lze využít make pro vytvoření knihovny pomocí Makefile.
+Předtím je ale nutné vyexportovat proměnnou prostředí LD_LIBRARY_PATH.
+
